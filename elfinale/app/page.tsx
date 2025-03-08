@@ -175,7 +175,7 @@ function Shield(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-function Calendar(props) {
+function Calendar(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -195,21 +195,5 @@ function Calendar(props) {
       <line x1="3" x2="21" y1="10" y2="10" />
     </svg>
   )
-}
-
-function Globe(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...props}>
-      {/* SVG content */}
-    </svg>
-  );
-}
-
-function Window(props: React.SVGProps<SVGSVGElement>) {
-  return (
-    <svg {...props}>
-      {/* SVG content */}
-    </svg>
-  );
 }
 
