@@ -104,6 +104,8 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="YouPursue" />
         <meta name="theme-color" content="#10b981" />
         <meta name="google-site-verification" content="your-verification-code" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
       <body className={`${inter.className} bg-white text-gray-900 antialiased overflow-x-hidden w-full`}>
@@ -117,4 +119,3 @@ export default function RootLayout({
     </html>
   )
 }
-
