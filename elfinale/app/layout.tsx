@@ -106,6 +106,11 @@ export default function RootLayout({
         <meta name="google-site-verification" content="your-verification-code" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/manifest.json" />
+        <meta property="og:image" content="/og-image.png" />
+        <meta name="msapplication-TileImage" content="/favicon-96x96.png" />
+        <meta name="msapplication-TileColor" content="#10b981" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
       <body className={`${inter.className} bg-white text-gray-900 antialiased overflow-x-hidden w-full`}>
