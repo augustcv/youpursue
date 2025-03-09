@@ -37,17 +37,13 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/web-app-manifest-192x192.png", sizes: "192x192", type: "image/png" },
-      { url: "/web-app-manifest-512x512.png", sizes: "512x512", type: "image/png" },
+      { url: "/icon.svg", type: "image/svg+xml" }
     ],
-    apple: [{ url: "/apple-touch-icon.png" }],
-    shortcut: [{ url: "/favicon.svg" }],
+    shortcut: [{ url: "/icon.svg" }],
     other: [
       {
         rel: "mask-icon",
-        url: "/favicon.svg",
+        url: "/icon.svg",
         color: "#10b981",
       },
     ],
@@ -101,10 +97,8 @@ export default function RootLayout({
     <html lang="en" className="overflow-x-hidden">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link rel="apple-touch-icon" href="/web-app-manifest-512x512.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="icon" href="/icon.svg" type="image/svg+xml"/>
+        <link rel="manifest" href="/site.webmanifest"/>
         <meta name="theme-color" content="#10b981" />
         <meta name="google-site-verification" content="your-verification-code" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
