@@ -43,7 +43,6 @@
     "@radix-ui/react-toggle": "^1.1.1",
     "@radix-ui/react-toggle-group": "^1.1.1",
     "@radix-ui/react-tooltip": "^1.1.6",
-    "@radix-ui/themes": "^3.2.1",
     "@supabase/supabase-js": "latest",
     "@vercel/examples-ui": "^2.0.3",
     "@vercel/og": "^0.6.8",
