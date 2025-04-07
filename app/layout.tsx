@@ -1,18 +1,21 @@
 import "./globals.css"
-import { Inter } from "next/font/google"
+import { GeistSans } from 'geist/font/sans'
+import { GeistMono } from 'geist/font/mono'
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import MouseMoveEffect from "@/components/mouse-move-effect"
 import { organizationSchema } from "./structured-data"
-
-const inter = Inter({ subsets: ["latin"] })
+import { GeistProvider, CssBaseline } from '@geist-ui/core'
+import { Theme } from '@radix-ui/themes'
+import '@radix-ui/themes/styles.css'
 
 export const metadata: Metadata = {
   title: "YouPursue - International Student Exchange Programs | High School & University Exchanges Worldwide",
   description:
     "Transform your educational journey with YouPursue's international exchange programs. Offering affordable high school exchanges, university study abroad opportunities, and cultural immersion experiences in over 50 countries. Join our global community of exchange students, experience authentic cultural connections, and develop valuable global competencies.",
+  metadataBase: new URL('https://www.youpursue.org'),
   keywords: [
     "student exchange program",
     "high school exchange",
@@ -49,7 +52,6 @@ export const metadata: Metadata = {
       },
     ],
   },
-  themeColor: "#10b981",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -86,7 +88,11 @@ export const metadata: Metadata = {
   other: {
     "google-site-verification": "your-verification-code",
   },
-    generator: 'v0.dev'
+  generator: 'v0.dev'
+}
+
+export const viewport: Viewport = {
+  themeColor: "#10b981",
 }
 
 export default function RootLayout({
@@ -95,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="overflow-x-hidden">
+    <html lang="en" className={`${GeistSans.className} ${GeistMono.className} overflow-x-hidden`}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" sizes="any"/>
@@ -107,16 +113,19 @@ export default function RootLayout({
         <meta name="google-site-verification" content="your-verification-code" />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
-      <body className={`${inter.className} bg-white text-gray-900 antialiased overflow-x-hidden w-full`}>
-        <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
-          <Navbar />
-          <MouseMoveEffect />
-          <div className="flex-grow w-full overflow-x-hidden">{children}</div>
-          <Footer />
-        </div>
+      <body className="font-sans bg-white text-gray-900 antialiased overflow-x-hidden w-full">
+        <Theme>
+          <GeistProvider>
+            <CssBaseline />
+            <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+              <Navbar />
+              <MouseMoveEffect />
+              <div className="flex-grow w-full overflow-x-hidden">{children}</div>
+              <Footer />
+            </div>
+          </GeistProvider>
+        </Theme>
       </body>
     </html>
   )
 }
-
-import './globals.css'

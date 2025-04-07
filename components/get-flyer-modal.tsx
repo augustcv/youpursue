@@ -25,7 +25,8 @@ export default function GetFlyerModal({ isOpen, onClose, onSubmit }: GetFlyerMod
     setError(null)
 
     try {
-      const response = await fetch("/api/request-flyer", {
+      const apiUrl = `${window.location.origin}/api/request-flyer`
+      const response = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
