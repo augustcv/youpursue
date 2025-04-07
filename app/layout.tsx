@@ -8,8 +8,6 @@ import Footer from "@/components/footer"
 import MouseMoveEffect from "@/components/mouse-move-effect"
 import { organizationSchema } from "./structured-data"
 import { GeistProvider, CssBaseline } from '@geist-ui/core'
-import { Theme } from '@radix-ui/themes'
-import '@radix-ui/themes/styles.css'
 
 export const metadata: Metadata = {
   title: "YouPursue - International Student Exchange Programs | High School & University Exchanges Worldwide",
@@ -114,17 +112,15 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
       <body className="font-sans bg-white text-gray-900 antialiased overflow-x-hidden w-full">
-        <Theme>
-          <GeistProvider>
-            <CssBaseline />
-            <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
-              <Navbar />
-              <MouseMoveEffect />
-              <div className="flex-grow w-full overflow-x-hidden">{children}</div>
-              <Footer />
-            </div>
-          </GeistProvider>
-        </Theme>
+        <GeistProvider>
+          <CssBaseline />
+          <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+            <Navbar />
+            <MouseMoveEffect />
+            <div className="flex-grow w-full overflow-x-hidden">{children}</div>
+            <Footer />
+          </div>
+        </GeistProvider>
       </body>
     </html>
   )
