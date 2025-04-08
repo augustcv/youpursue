@@ -156,7 +156,7 @@ export default function Page() {
 }
 
 // Add missing components
-function Shield(props) {
+function Shield(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}
@@ -175,7 +175,7 @@ function Shield(props) {
   )
 }
 
-function Calendar(props) {
+function Calendar(props: React.SVGProps<SVGSVGElement>) {
   return (
     <svg
       {...props}

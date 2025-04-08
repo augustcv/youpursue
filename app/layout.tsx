@@ -1,11 +1,10 @@
 import "./globals.css"
-import { GeistSans } from 'geist/font/sans'
-import { GeistMono } from 'geist/font/mono'
 import type React from "react"
-import type { Metadata, Viewport } from "next"
+import type { Metadata } from "next"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import MouseMoveEffect from "@/components/mouse-move-effect"
+import { ThemeProvider } from "@/components/theme-provider"
 import { organizationSchema } from "./structured-data"
 
 export const metadata: Metadata = {
@@ -35,20 +34,12 @@ export const metadata: Metadata = {
     "global learning",
   ],
   manifest: "/site.webmanifest",
-  icons: {
-    icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: "/icon.svg", type: "image/svg+xml" }
-    ],
-    shortcut: [{ url: "/favicon.ico" }],
-    other: [
-      {
-        rel: "mask-icon",
-        url: "/icon.svg",
-        color: "#10b981",
-      },
-    ],
-  },
+  icons: [
+    { rel: "icon", url: "/favicon.ico", type: "image/x-icon" },
+    { rel: "icon", url: "/icon.svg", type: "image/svg+xml" },
+    { rel: "shortcut icon", url: "/favicon.ico" },
+    { rel: "mask-icon", url: "/icon.svg" }
+  ],
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -88,17 +79,13 @@ export const metadata: Metadata = {
   generator: 'v0.dev'
 }
 
-export const viewport: Viewport = {
-  themeColor: "#10b981",
-}
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={`${GeistSans.className} ${GeistMono.className} overflow-x-hidden`}>
+    <html lang="en" className="overflow-x-hidden">
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="icon" href="/favicon.ico" sizes="any"/>
@@ -111,12 +98,14 @@ export default function RootLayout({
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }} />
       </head>
       <body className="font-sans bg-white text-gray-900 antialiased overflow-x-hidden w-full">
-        <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
-          <Navbar />
-          <MouseMoveEffect />
-          <div className="flex-grow w-full overflow-x-hidden">{children}</div>
-          <Footer />
-        </div>
+        <ThemeProvider attribute="class" defaultTheme="light">
+          <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+            <Navbar />
+            <MouseMoveEffect />
+            <div className="flex-grow w-full overflow-x-hidden">{children}</div>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   )
