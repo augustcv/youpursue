@@ -25,7 +25,7 @@ export default function Safety() {
   return (
     <div className="min-h-screen bg-white">
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold mb-8 text-gray-800">Your Safety is Our Priority</h1>
+        <h1 className="text-4xl font-bold mb-8 text-gray-800">Your Safety Is Our Number 1 Priority</h1>
 
         <div className="prose prose-lg max-w-none text-gray-600 mb-12">
           <p className="lead text-xl">
@@ -176,7 +176,7 @@ export default function Safety() {
             <li>Medical evacuation if necessary</li>
             <li>Coverage for pre-existing conditions</li>
             <li>24/7 assistance services</li>
-            <li>Coverage for lost baggage and travel disruptions</li>
+            <li>Coverage for emergency medical situations</li>
           </ul>
           <p className="text-gray-600">
             We partner with reputable international insurance providers to offer affordable options that meet our high
@@ -222,4 +222,3 @@ export default function Safety() {
     </div>
   )
 }
-

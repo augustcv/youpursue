@@ -21,11 +21,6 @@ export default function Footer() {
                     High School
                   </Link>
                 </li>
-                <li>
-                  <Link href="/programs#university" className="text-gray-600 hover:text-black transition-colors">
-                    University
-                  </Link>
-                </li>
               </ul>
             </div>
             <div className="space-y-4">
@@ -41,10 +36,20 @@ export default function Footer() {
                     Safety
                   </Link>
                 </li>
+                <li>
+                  <Link href="/impressum" className="text-gray-600 hover:text-black transition-colors">
+                    Impressum
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="text-gray-600 hover:text-black transition-colors">
+                    Terms & Conditions
+                  </Link>
+                </li>
               </ul>
             </div>
             <div className="space-y-4">
-              <h3 className="text-sm font-medium text-black">Contact</h3>
+              <h3 className="text-sm font-medium text-black">Contact and Feedback</h3>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center space-x-2 text-gray-600">
                   <Mail className="h-4 w-4" />
@@ -78,4 +83,3 @@ export default function Footer() {
     </footer>
   )
 }
-

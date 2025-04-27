@@ -19,5 +19,5 @@ export interface Application {
   guardianLastName: string
   createdAt: string
   desiredDestinations?: string
+  packageType?: string
 }
-

@@ -8,11 +8,10 @@ export default function CTA() {
         <p className="text-xl mb-8 max-w-2xl mx-auto">
           Join thousands of teams already using StreamLine to boost their productivity.
         </p>
-        <Button size="lg" variant="outline">
+        <Button size="lg" variant="secondary">
           Start Your Free Trial
         </Button>
       </div>
     </section>
   )
 }
-

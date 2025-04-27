@@ -6,4 +6,3 @@ ADD COLUMN desired_destinations TEXT;
 UPDATE applications 
 SET desired_destinations = '' 
 WHERE desired_destinations IS NULL;
-

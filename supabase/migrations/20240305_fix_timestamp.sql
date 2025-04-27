@@ -16,4 +16,3 @@ ADD COLUMN created_at TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP;
 -- Add indexes for better performance
 CREATE INDEX IF NOT EXISTS idx_applications_created_at ON applications(created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_flyer_requests_created_at ON flyer_requests(created_at DESC);
-

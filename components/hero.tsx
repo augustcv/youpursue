@@ -32,11 +32,11 @@ export default function Hero() {
         </p>
       </div>
       <div className="flex flex-wrap gap-4 justify-center">
-        <Button size="lg" className="bg-emerald-600 hover:bg-black hover:text-white transition-colors">
-          <Link href="/apply" className="w-full h-full flex items-center justify-center">
+        <Link href="/apply" className="w-full sm:w-auto">
+          <Button size="lg" className="bg-blue-600 hover:bg-black hover:text-white text-white transition-colors w-full">
             Start Your Application
-          </Link>
-        </Button>
+          </Button>
+        </Link>
         <Button
           variant="outline"
           size="lg"
@@ -66,4 +66,3 @@ export default function Hero() {
     </section>
   )
 }
-

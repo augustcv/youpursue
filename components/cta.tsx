@@ -12,19 +12,25 @@ export default function CTA() {
           Expand your horizons, learn new languages, and make lifelong friends through YouPursue's exchange programs.
         </p>
         <div className="flex flex-col gap-4 mt-8">
-          <Button
-            variant="outline"
-            size="lg"
-            className="bg-white text-black hover:bg-black hover:text-white transition-colors"
-          >
-            <Link href="/how-it-works">How It Works</Link>
-          </Button>
-          <Button size="lg" className="bg-emerald-600 hover:bg-black hover:text-white transition-colors">
-            <Link href="/apply">Start Your Application</Link>
-          </Button>
+          <Link href="/how-it-works" className="w-full">
+            <Button
+              variant="outline"
+              size="lg"
+              className="bg-white text-black hover:bg-black hover:text-white transition-colors w-full"
+            >
+              How It Works
+            </Button>
+          </Link>
+          <Link href="/apply" className="w-full">
+            <Button
+              size="lg"
+              className="bg-blue-600 hover:bg-black hover:text-white text-white transition-colors w-full"
+            >
+              Start Your Application
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
   )
 }
-

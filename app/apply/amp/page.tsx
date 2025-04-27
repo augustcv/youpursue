@@ -7,10 +7,10 @@ export default function AMPApply() {
   return (
     <>
       <Head>
-        <title>Apply for International Student Exchange Program | YouPursue</title>
+        <title>Apply for High School Exchange Program | YouPursue</title>
         <meta
           name="description"
-          content="Apply now for life-changing high school and university exchange programs. Experience global education, cultural immersion, and personal growth with YouPursue."
+          content="Apply now for a life-changing high school exchange program. Experience global education, cultural immersion, and personal growth with YouPursue."
         />
         <link rel="canonical" href="https://www.youpursue.org/apply" />
       </Head>
@@ -68,4 +68,3 @@ export default function AMPApply() {
     </>
   )
 }
-

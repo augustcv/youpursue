@@ -73,7 +73,7 @@ export default function AdminPage() {
               <th className="border border-gray-300 p-2">Name</th>
               <th className="border border-gray-300 p-2">Email</th>
               <th className="border border-gray-300 p-2">Phone</th>
-              <th className="border border-gray-300 p-2">Program</th>
+              <th className="border border-gray-300 p-2">Package</th>
               <th className="border border-gray-300 p-2">Exchange Length</th>
               <th className="border border-gray-300 p-2">Desired Destinations</th>
               <th className="border border-gray-300 p-2">Created At</th>
@@ -85,7 +85,13 @@ export default function AdminPage() {
                 <td className="border border-gray-300 p-2">{`${application.firstName} ${application.lastName}`}</td>
                 <td className="border border-gray-300 p-2">{application.email}</td>
                 <td className="border border-gray-300 p-2">{application.phone}</td>
-                <td className="border border-gray-300 p-2">{application.program}</td>
+                <td className="border border-gray-300 p-2">
+                  {application.packageType === "premium" ? (
+                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">Premium ($10,000)</span>
+                  ) : (
+                    <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded">Standard ($1,000)</span>
+                  )}
+                </td>
                 <td className="border border-gray-300 p-2">{application.exchangeLength}</td>
                 <td className="border border-gray-300 p-2">{application.desiredDestinations || "Not specified"}</td>
                 <td className="border border-gray-300 p-2">
@@ -99,4 +105,3 @@ export default function AdminPage() {
     </div>
   )
 }
-

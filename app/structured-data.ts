@@ -3,7 +3,7 @@ export const organizationSchema = {
   "@type": "Organization",
   name: "YouPursue",
   url: "https://www.youpursue.org",
-  logo: "https://www.youpursue.org/icon.svg",
+  logo: "https://www.youpursue.org/favicon.svg",
   sameAs: [
     "https://www.facebook.com/youpursue",
     "https://www.instagram.com/youpursue",
@@ -34,7 +34,7 @@ export const highSchoolExchangeSchema = {
   "@type": "Course",
   name: "High School Exchange Program",
   description:
-    "International exchange program for high school students aged 15-18, offering cultural immersion and personal growth through peer-to-peer exchanges.",
+    "International exchange program for high school students aged 14-19, offering cultural immersion and personal growth through peer-to-peer exchanges.",
   provider: {
     "@type": "Organization",
     name: "YouPursue",
@@ -44,26 +44,6 @@ export const highSchoolExchangeSchema = {
     "@type": "EducationalAudience",
     educationalRole: "Student",
     audienceType: "High School Students",
-  },
-  educationalCredentialAwarded: "International Exchange Experience",
-  timeRequired: "P1M to P6M",
-}
-
-export const universityExchangeSchema = {
-  "@context": "https://schema.org",
-  "@type": "Course",
-  name: "University Exchange Program",
-  description:
-    "International exchange program for university students, focusing on cultural immersion and university life experience abroad.",
-  provider: {
-    "@type": "Organization",
-    name: "YouPursue",
-    sameAs: "https://www.youpursue.com",
-  },
-  audience: {
-    "@type": "EducationalAudience",
-    educationalRole: "Student",
-    audienceType: "University Students",
   },
   educationalCredentialAwarded: "International Exchange Experience",
   timeRequired: "P1M to P6M",
@@ -99,4 +79,3 @@ export const faqSchema = {
     },
   ],
 }
-

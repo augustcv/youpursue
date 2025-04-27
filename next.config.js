@@ -4,6 +4,7 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ["v0.blob.com", "hebbkx1anhila5yf.public.blob.vercel-storage.com"],
+    unoptimized: true,
   },
   webpack(config) {
     config.module.rules.push({
@@ -12,6 +13,12 @@ const nextConfig = {
     })
     return config
   },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig

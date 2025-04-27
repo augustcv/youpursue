@@ -1,8 +1,11 @@
 import Hero from "@/components/hero"
 import Features from "@/components/features"
 import CTA from "@/components/cta"
+import PricingPackages from "@/components/pricing-packages"
 import Link from "next/link"
 import { GlobeIcon, Users, Home } from "lucide-react"
+import TestimonialsSection from "@/components/testimonials-section"
+import RotaryCollaboration from "@/components/rotary-collaboration"
 
 export default function Page() {
   return (
@@ -19,6 +22,9 @@ export default function Page() {
           <div className="relative z-10 w-full">
             <Hero />
             <Features />
+            <RotaryCollaboration />
+            <TestimonialsSection />
+            <PricingPackages />
 
             {/* Enhanced SEO-optimized content section */}
             <section className="py-16 bg-gray-50 w-full">
@@ -41,10 +47,9 @@ export default function Page() {
                     <div className="bg-white p-8 rounded-xl shadow-md mb-8">
                       <h3 className="text-xl font-semibold mb-4 text-emerald-600">Comprehensive Exchange Programs</h3>
                       <p className="text-black mb-4">
-                        Whether you're seeking a high school experience abroad or a university semester exchange, our
-                        programs cater to diverse personal goals. Students can choose from various program lengths, from
-                        one-month cultural immersions to semester exchanges, all designed to foster global competency
-                        and personal growth.
+                        Our high school exchange programs cater to diverse personal goals. Students can choose from
+                        various program lengths, from one-month cultural immersions to semester exchanges, all designed
+                        to foster global competency and personal growth.
                       </p>
                       <div className="grid md:grid-cols-3 gap-6 mt-6">
                         <div className="bg-gray-50 p-5 rounded-lg text-center">
@@ -60,9 +65,9 @@ export default function Page() {
                           </p>
                         </div>
                         <div className="bg-gray-50 p-5 rounded-lg text-center">
-                          <h4 className="font-semibold text-emerald-600 mb-2">University Exchanges</h4>
+                          <h4 className="font-semibold text-emerald-600 mb-2">Semester Exchanges</h4>
                           <p className="text-gray-700 text-sm">
-                            Semester-long programs for university students to study abroad
+                            Comprehensive 4-5 month programs for deep cultural immersion and academic growth
                           </p>
                         </div>
                       </div>
@@ -76,7 +81,7 @@ export default function Page() {
                           <div>
                             <p className="font-medium text-black">Direct Connections</p>
                             <p className="text-gray-700 text-sm leading-tight">
-                              Student-to-student and family-to-family connections, eliminating expensive agency fees
+                              Student-to-student and family-to-family connections, creating authentic relationships
                             </p>
                           </div>
                         </li>
@@ -130,7 +135,7 @@ export default function Page() {
                       <div className="flex flex-wrap gap-4 mt-6">
                         <Link
                           href="/apply"
-                          className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-emerald-600 hover:bg-black hover:text-white transition-colors duration-300"
+                          className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-black hover:text-white transition-colors duration-300"
                         >
                           Apply Now
                         </Link>
@@ -156,7 +161,7 @@ export default function Page() {
 }
 
 // Add missing components
-function Shield(props: React.SVGProps<SVGSVGElement>) {
+function Shield(props) {
   return (
     <svg
       {...props}
@@ -175,7 +180,7 @@ function Shield(props: React.SVGProps<SVGSVGElement>) {
   )
 }
 
-function Calendar(props: React.SVGProps<SVGSVGElement>) {
+function Calendar(props) {
   return (
     <svg
       {...props}
@@ -196,4 +201,3 @@ function Calendar(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   )
 }
-

@@ -9,14 +9,17 @@ const images = [
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/719E0378-3095-49D5-9F5A-B78C0D4AC386-Rl7VK6uHmrgQAjY0OoWKakTSXcWvEc.jpeg",
     alt: "Student watching elephant during safari",
+    location: "South Africa",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/1F0AE820-3F61-4150-BE6A-740647D3A582_1_105_c-bW8KB5DDBfuzq1OPKB69s9QYlHf4KD.jpeg",
     alt: "Cable car in Rio de Janeiro",
+    location: "Brazil",
   },
   {
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/EDA041DC-7DA0-46D6-BA07-F000645E0768_1_201_a-aaweCvgrl1cWGgrhzBa0qbBlzVtELn.jpeg",
     alt: "Winter scene with snow",
+    location: "Germany",
   },
 ]
 
@@ -40,6 +43,9 @@ export default function ImageGallery() {
                 fill
                 className="object-cover rounded-lg shadow-xl"
               />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-2 rounded-b-lg">
+                <p className="text-sm font-medium">{image.location}</p>
+              </div>
             </div>
           ))}
         </div>
@@ -60,6 +66,9 @@ export default function ImageGallery() {
                 fill
                 className="object-cover rounded-2xl shadow-xl"
               />
+              <div className="absolute bottom-0 left-0 right-0 bg-black/60 text-white p-3 rounded-b-2xl">
+                <p className="text-lg font-medium">{image.location}</p>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -101,4 +110,3 @@ export default function ImageGallery() {
     </>
   )
 }
-

@@ -57,23 +57,23 @@ export default function Navbar() {
 
         {/* Desktop buttons */}
         <div className="hidden md:flex items-center space-x-4">
-          <Button
-            variant="ghost"
-            size="sm"
-            className="text-muted-foreground hover:bg-black hover:text-white transition-colors header-footer-button"
-          >
-            <Link href="/login" className="w-full h-full flex items-center justify-center">
+          <Link href="/login" className="w-full">
+            <Button
+              variant="ghost"
+              size="sm"
+              className="text-muted-foreground hover:bg-black hover:text-white transition-colors header-footer-button w-full"
+            >
               Login
-            </Link>
-          </Button>
-          <Button
-            size="sm"
-            className="bg-emerald-600 hover:bg-black hover:text-white transition-colors header-footer-button"
-          >
-            <Link href="/apply" className="w-full h-full flex items-center justify-center">
+            </Button>
+          </Link>
+          <Link href="/apply" className="w-full">
+            <Button
+              size="sm"
+              className="bg-blue-600 hover:bg-black hover:text-white text-white transition-colors header-footer-button w-full"
+            >
               Apply Now
-            </Link>
-          </Button>
+            </Button>
+          </Link>
         </div>
 
         {/* Mobile menu */}
@@ -105,12 +105,16 @@ export default function Navbar() {
                 Safety
               </Link>
               <div className="flex flex-col gap-2 mt-4">
-                <Button variant="ghost" className="w-full justify-start header-footer-button">
-                  <Link href="/login">Login</Link>
-                </Button>
-                <Button className="w-full justify-start bg-emerald-600 hover:bg-black hover:text-white header-footer-button">
-                  <Link href="/apply">Apply Now</Link>
-                </Button>
+                <Link href="/login" className="w-full">
+                  <Button variant="ghost" className="w-full justify-start header-footer-button">
+                    Login
+                  </Button>
+                </Link>
+                <Link href="/apply" className="w-full">
+                  <Button className="w-full justify-start bg-blue-600 hover:bg-black hover:text-white text-white header-footer-button">
+                    Apply Now
+                  </Button>
+                </Link>
               </div>
             </nav>
           </div>
@@ -119,4 +123,3 @@ export default function Navbar() {
     </header>
   )
 }
-
