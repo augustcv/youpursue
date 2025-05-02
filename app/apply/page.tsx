@@ -36,6 +36,11 @@ type ApplicationData = {
   applicationId?: string | null
 }
 
+// Define a type for form data collected at each step
+type FormStepData = {
+  [key: string]: string | string[] | null
+}
+
 export default function Apply() {
   const searchParams = useSearchParams()
   const router = useRouter()
@@ -55,6 +60,9 @@ export default function Apply() {
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false)
   const [otherDestination, setOtherDestination] = useState<string>("")
   const [isPrinting, setIsPrinting] = useState(false)
+  
+  // Add state to store form data from each step
+  const [step2Data, setStep2Data] = useState<FormStepData>({})
 
   const printRef = useRef<HTMLDivElement>(null)
 
@@ -167,7 +175,7 @@ export default function Apply() {
     setWordCount(words.length)
   }
 
-  // Update the handleSubmit function to ensure proper data formatting and error handling
+  // Update the handleSubmit function to combine data from all steps
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsLoading(true)
@@ -184,37 +192,55 @@ export default function Apply() {
 
     const selectedDestinations = formData.getAll("desiredDestinations") as string[]
 
-    // Create the data object with snake_case keys to match the database schema
-    const data = {
-      first_name: formData.get("firstName") as string,
-      last_name: formData.get("lastName") as string,
-      email: formData.get("email") as string,
-      phone: formData.get("phone") as string,
-      country: formData.get("country") as string,
-      gender: formData.get("gender") as string,
+    // Combine data from step 2 with current form data
+    const combinedData = {
+      // Data from step 2
+      first_name: step2Data.firstName as string,
+      last_name: step2Data.lastName as string,
+      email: step2Data.email as string,
+      phone: step2Data.phone as string,
+      country: step2Data.country as string,
+      gender: step2Data.gender as string,
+      address: step2Data.address as string,
+      city: step2Data.city as string,
+      postal_code: step2Data.postalCode as string,
+      state: step2Data.state as string,
+      birth_date: step2Data.birthDate as string,
+      school_name: step2Data.schoolName as string || null,
+      school_grade: step2Data.schoolGrade as string || null,
+      languages: step2Data.languages as string || null,
+      allergies: step2Data.allergies as string || null,
+      dietary_restrictions: step2Data.dietaryRestrictions as string || null,
+      
+      // Data from step 3
       exchange_length: formData.get("exchangeLength") as string,
       message: formData.get("message") as string,
       guardian_first_name: formData.get("guardianFirstName") as string,
       guardian_last_name: formData.get("guardianLastName") as string,
       desired_destinations: selectedDestinations.length > 0 ? selectedDestinations.join(", ") : null,
+      
+      // Common data
       package_type: selectedPackage,
-      address: formData.get("address") as string,
-      city: formData.get("city") as string,
-      postal_code: formData.get("postalCode") as string,
-      state: formData.get("state") as string,
-      birth_date: formData.get("birthDate") as string,
-      school_name: (formData.get("schoolName") as string) || null,
-      school_grade: (formData.get("schoolGrade") as string) || null,
-      languages: (formData.get("languages") as string) || null,
-      allergies: (formData.get("allergies") as string) || null,
-      dietary_restrictions: (formData.get("dietaryRestrictions") as string) || null,
       application_id: `APP-${Date.now().toString().slice(-8)}`,
       payment_status: "pending",
       payment_id: null,
     }
 
+    // Log the combined data to verify all fields are present
+    console.log("Combined application data:", combinedData)
+
     try {
-      console.log("Sending application data:", data)
+      // Verify required fields are present
+      const requiredFields = [
+        "first_name", "last_name", "email", "phone", "country", "gender", 
+        "address", "city", "postal_code", "state", "birth_date",
+        "exchange_length", "message", "guardian_first_name", "guardian_last_name"
+      ]
+      
+      const missingFields = requiredFields.filter(field => !combinedData[field])
+      if (missingFields.length > 0) {
+        throw new Error(`Missing required fields: ${missingFields.join(", ")}`)
+      }
 
       let response
       try {
@@ -223,7 +249,7 @@ export default function Apply() {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify(data),
+          body: JSON.stringify(combinedData),
         })
       } catch (fetchError) {
         console.error("Fetch error:", fetchError)
@@ -263,29 +289,29 @@ export default function Apply() {
 
       // Convert snake_case to camelCase for frontend display
       const applicationDataForDisplay = {
-        firstName: data.first_name,
-        lastName: data.last_name,
-        email: data.email,
-        phone: data.phone,
-        country: data.country,
-        gender: data.gender,
-        exchangeLength: data.exchange_length,
-        message: data.message,
-        guardianFirstName: data.guardian_first_name,
-        guardianLastName: data.guardian_last_name,
-        desiredDestinations: data.desired_destinations,
-        packageType: data.package_type,
-        address: data.address,
-        city: data.city,
-        postalCode: data.postal_code,
-        state: data.state,
-        birthDate: data.birth_date,
-        schoolName: data.school_name,
-        schoolGrade: data.school_grade,
-        languages: data.languages,
-        allergies: data.allergies,
-        dietaryRestrictions: data.dietary_restrictions,
-        applicationId: data.application_id,
+        firstName: combinedData.first_name,
+        lastName: combinedData.last_name,
+        email: combinedData.email,
+        phone: combinedData.phone,
+        country: combinedData.country,
+        gender: combinedData.gender,
+        exchangeLength: combinedData.exchange_length,
+        message: combinedData.message,
+        guardianFirstName: combinedData.guardian_first_name,
+        guardianLastName: combinedData.guardian_last_name,
+        desiredDestinations: combinedData.desired_destinations,
+        packageType: combinedData.package_type,
+        address: combinedData.address,
+        city: combinedData.city,
+        postalCode: combinedData.postal_code,
+        state: combinedData.state,
+        birthDate: combinedData.birth_date,
+        schoolName: combinedData.school_name,
+        schoolGrade: combinedData.school_grade,
+        languages: combinedData.languages,
+        allergies: combinedData.allergies,
+        dietaryRestrictions: combinedData.dietary_restrictions,
+        applicationId: combinedData.application_id,
       }
 
       setApplicationData(applicationDataForDisplay)
@@ -308,11 +334,38 @@ export default function Apply() {
     setCurrentStep(2)
   }
 
+  // Update handleNextStep to save form data from step 2
   const handleNextStep = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
 
     if (validateForm(formData, currentStep)) {
+      // If moving from step 2 to step 3, save the form data
+      if (currentStep === 2) {
+        const step2FormData: FormStepData = {
+          firstName: formData.get("firstName") as string,
+          lastName: formData.get("lastName") as string,
+          email: formData.get("email") as string,
+          phone: formData.get("phone") as string,
+          country: formData.get("country") as string,
+          gender: formData.get("gender") as string,
+          address: formData.get("address") as string,
+          city: formData.get("city") as string,
+          postalCode: formData.get("postalCode") as string,
+          state: formData.get("state") as string,
+          birthDate: formData.get("birthDate") as string,
+          schoolName: formData.get("schoolName") as string || null,
+          schoolGrade: formData.get("schoolGrade") as string || null,
+          languages: formData.get("languages") as string || null,
+          allergies: formData.get("allergies") as string || null,
+          dietaryRestrictions: formData.get("dietaryRestrictions") as string || null,
+        }
+        
+        // Log the saved data to verify
+        console.log("Saving step 2 data:", step2FormData)
+        setStep2Data(step2FormData)
+      }
+      
       setCurrentStep(currentStep + 1)
       window.scrollTo({ top: 0, behavior: "smooth" })
     } else {
@@ -698,6 +751,12 @@ export default function Apply() {
                     <div className="flex items-baseline mb-4">
                       <span className="text-5xl font-extrabold text-gray-900">$10,000</span>
                     </div>
+                    <p className="text-gray-600 mb-6">
+                      Our premium package offers enhanced support and personalized services for the ultimate exchange
+                      experience.
+                    </p>
+                    <div className="h-[72px]">
+                      <Button\
                     <p className="text-gray-600 mb-6">
                       Our premium package offers enhanced support and personalized services for the ultimate exchange
                       experience.
