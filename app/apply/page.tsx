@@ -60,7 +60,7 @@ export default function Apply() {
   const [showConfirmation, setShowConfirmation] = useState<boolean>(false)
   const [otherDestination, setOtherDestination] = useState<string>("")
   const [isPrinting, setIsPrinting] = useState(false)
-  
+
   // Add state to store form data from each step
   const [step2Data, setStep2Data] = useState<FormStepData>({})
 
@@ -206,19 +206,19 @@ export default function Apply() {
       postal_code: step2Data.postalCode as string,
       state: step2Data.state as string,
       birth_date: step2Data.birthDate as string,
-      school_name: step2Data.schoolName as string || null,
-      school_grade: step2Data.schoolGrade as string || null,
-      languages: step2Data.languages as string || null,
-      allergies: step2Data.allergies as string || null,
-      dietary_restrictions: step2Data.dietaryRestrictions as string || null,
-      
+      school_name: (step2Data.schoolName as string) || null,
+      school_grade: (step2Data.schoolGrade as string) || null,
+      languages: (step2Data.languages as string) || null,
+      allergies: (step2Data.allergies as string) || null,
+      dietary_restrictions: (step2Data.dietaryRestrictions as string) || null,
+
       // Data from step 3
       exchange_length: formData.get("exchangeLength") as string,
       message: formData.get("message") as string,
       guardian_first_name: formData.get("guardianFirstName") as string,
       guardian_last_name: formData.get("guardianLastName") as string,
       desired_destinations: selectedDestinations.length > 0 ? selectedDestinations.join(", ") : null,
-      
+
       // Common data
       package_type: selectedPackage,
       application_id: `APP-${Date.now().toString().slice(-8)}`,
@@ -232,12 +232,24 @@ export default function Apply() {
     try {
       // Verify required fields are present
       const requiredFields = [
-        "first_name", "last_name", "email", "phone", "country", "gender", 
-        "address", "city", "postal_code", "state", "birth_date",
-        "exchange_length", "message", "guardian_first_name", "guardian_last_name"
+        "first_name",
+        "last_name",
+        "email",
+        "phone",
+        "country",
+        "gender",
+        "address",
+        "city",
+        "postal_code",
+        "state",
+        "birth_date",
+        "exchange_length",
+        "message",
+        "guardian_first_name",
+        "guardian_last_name",
       ]
-      
-      const missingFields = requiredFields.filter(field => !combinedData[field])
+
+      const missingFields = requiredFields.filter((field) => !combinedData[field])
       if (missingFields.length > 0) {
         throw new Error(`Missing required fields: ${missingFields.join(", ")}`)
       }
@@ -354,18 +366,18 @@ export default function Apply() {
           postalCode: formData.get("postalCode") as string,
           state: formData.get("state") as string,
           birthDate: formData.get("birthDate") as string,
-          schoolName: formData.get("schoolName") as string || null,
-          schoolGrade: formData.get("schoolGrade") as string || null,
-          languages: formData.get("languages") as string || null,
-          allergies: formData.get("allergies") as string || null,
-          dietaryRestrictions: formData.get("dietaryRestrictions") as string || null,
+          schoolName: (formData.get("schoolName") as string) || null,
+          schoolGrade: (formData.get("schoolGrade") as string) || null,
+          languages: (formData.get("languages") as string) || null,
+          allergies: (formData.get("allergies") as string) || null,
+          dietaryRestrictions: (formData.get("dietaryRestrictions") as string) || null,
         }
-        
+
         // Log the saved data to verify
         console.log("Saving step 2 data:", step2FormData)
         setStep2Data(step2FormData)
       }
-      
+
       setCurrentStep(currentStep + 1)
       window.scrollTo({ top: 0, behavior: "smooth" })
     } else {
@@ -402,7 +414,7 @@ export default function Apply() {
   // Update the getStripePaymentLink function to ensure it returns the correct links
   const getStripePaymentLink = () => {
     return selectedPackage === "premium"
-      ? "https://buy.stripe.com/7sIdRE6mM38nb3WcMN"
+      ? "https://buy.stripe.com/7sIdRE6mM38nb38nb3WcMN"
       : "https://buy.stripe.com/6oE3d06mM9wL3BueUU"
   }
 
@@ -751,12 +763,6 @@ export default function Apply() {
                     <div className="flex items-baseline mb-4">
                       <span className="text-5xl font-extrabold text-gray-900">$10,000</span>
                     </div>
-                    <p className="text-gray-600 mb-6">
-                      Our premium package offers enhanced support and personalized services for the ultimate exchange
-                      experience.
-                    </p>
-                    <div className="h-[72px]">
-                      <Button\
                     <p className="text-gray-600 mb-6">
                       Our premium package offers enhanced support and personalized services for the ultimate exchange
                       experience.
