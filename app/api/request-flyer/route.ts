@@ -1,21 +1,8 @@
 import { NextResponse } from "next/server"
-import { supabase, isSupabaseConfigured } from "@/lib/supabase"
+import { supabase } from "@/lib/supabase"
 
 export async function POST(request: Request) {
   try {
-    // Check if Supabase is properly configured
-    if (!isSupabaseConfigured()) {
-      console.error("Supabase client not properly configured")
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Database configuration error",
-          details: "Missing Supabase environment variables",
-        },
-        { status: 500 },
-      )
-    }
-
     // Parse the request body
     let requestData
     try {
@@ -39,7 +26,7 @@ export async function POST(request: Request) {
 
     console.log("Submitting flyer request for email:", email)
 
-    // Insert the flyer request into the database
+    // Insert the flyer request into the flyer_requests table
     const { data, error } = await supabase.from("flyer_requests").insert([{ email }]).select()
 
     if (error) {

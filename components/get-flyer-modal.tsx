@@ -9,7 +9,7 @@ import { X } from "lucide-react"
 interface GetFlyerModalProps {
   isOpen: boolean
   onClose: () => void
-  onSubmit: (email: string) => Promise<void>
+  onSubmit?: (email: string) => void
 }
 
 export default function GetFlyerModal({ isOpen, onClose, onSubmit }: GetFlyerModalProps) {
@@ -42,9 +42,13 @@ export default function GetFlyerModal({ isOpen, onClose, onSubmit }: GetFlyerMod
         throw new Error(errorData.error || "Failed to request flyer")
       }
 
-      // Call the onSubmit callback
-      await onSubmit(email)
+      // Call the onSubmit callback if provided
+      if (onSubmit) {
+        await onSubmit(email)
+      }
+
       setEmail("")
+      onClose()
     } catch (err: any) {
       setError(err.message || "An error occurred. Please try again.")
     } finally {

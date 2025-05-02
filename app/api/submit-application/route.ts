@@ -1,21 +1,8 @@
 import { NextResponse } from "next/server"
-import { supabase, isSupabaseConfigured, camelToSnakeCase } from "@/lib/supabase"
+import { supabase } from "@/lib/supabase"
 
 export async function POST(request: Request) {
   try {
-    // Check if Supabase is properly configured
-    if (!isSupabaseConfigured()) {
-      console.error("Supabase client not properly configured")
-      return NextResponse.json(
-        {
-          success: false,
-          error: "Database configuration error",
-          details: "Missing Supabase environment variables",
-        },
-        { status: 500 },
-      )
-    }
-
     // Parse the request body
     let applicationData
     try {
@@ -30,17 +17,14 @@ export async function POST(request: Request) {
 
     console.log("Received application data:", applicationData)
 
-    // Convert camelCase fields to snake_case for the database
-    const dbData = camelToSnakeCase(applicationData)
-
     // Remove any existing created_at field to let Supabase handle it
-    delete dbData.created_at
-    delete dbData.updated_at
+    delete applicationData.created_at
+    delete applicationData.updated_at
 
-    console.log("Submitting application data to Supabase:", dbData)
+    console.log("Submitting application data to Supabase:", applicationData)
 
-    // Insert the application into the database
-    const { data, error } = await supabase.from("applications").insert([dbData]).select()
+    // Insert the application into the applications table
+    const { data, error } = await supabase.from("applications").insert([applicationData]).select()
 
     if (error) {
       console.error("Supabase insertion error:", error)
@@ -50,8 +34,6 @@ export async function POST(request: Request) {
           error: "Database error",
           details: error.message,
           code: error.code,
-          hint: error.hint,
-          details: error.details,
         },
         { status: 500 },
       )
@@ -74,12 +56,6 @@ export async function POST(request: Request) {
 
 export async function GET() {
   try {
-    // Check if Supabase is properly configured
-    if (!isSupabaseConfigured()) {
-      console.error("Supabase client not properly configured")
-      return NextResponse.json({ success: false, error: "Database configuration error" }, { status: 500 })
-    }
-
     // Fetch all applications from the database
     const { data, error } = await supabase.from("applications").select("*").order("created_at", { ascending: false })
 

@@ -210,6 +210,7 @@ export default function Apply() {
       dietary_restrictions: (formData.get("dietaryRestrictions") as string) || null,
       application_id: `APP-${Date.now().toString().slice(-8)}`,
       payment_status: "pending",
+      payment_id: null,
     }
 
     try {
