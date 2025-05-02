@@ -17,7 +17,33 @@ export async function POST(request: Request) {
 
     console.log("Received application data:", applicationData)
 
-    // Remove any existing created_at field to let Supabase handle it
+    // Format the birth_date field to ensure it's in the correct format for PostgreSQL date type
+    if (applicationData.birth_date) {
+      // Ensure it's in YYYY-MM-DD format
+      const dateObj = new Date(applicationData.birth_date)
+      if (!isNaN(dateObj.getTime())) {
+        applicationData.birth_date = dateObj.toISOString().split("T")[0]
+      }
+    }
+
+    // Handle null values for optional fields
+    const optionalFields = [
+      "school_name",
+      "school_grade",
+      "languages",
+      "allergies",
+      "dietary_restrictions",
+      "application_id",
+      "payment_id",
+    ]
+
+    optionalFields.forEach((field) => {
+      if (applicationData[field] === null || applicationData[field] === undefined || applicationData[field] === "") {
+        applicationData[field] = null
+      }
+    })
+
+    // Remove any existing created_at and updated_at fields to let Supabase handle them
     delete applicationData.created_at
     delete applicationData.updated_at
 
@@ -34,6 +60,8 @@ export async function POST(request: Request) {
           error: "Database error",
           details: error.message,
           code: error.code,
+          hint: error.hint,
+          dbDetails: error.details,
         },
         { status: 500 },
       )

@@ -196,7 +196,7 @@ export default function Apply() {
       message: formData.get("message") as string,
       guardian_first_name: formData.get("guardianFirstName") as string,
       guardian_last_name: formData.get("guardianLastName") as string,
-      desired_destinations: selectedDestinations.join(", "),
+      desired_destinations: selectedDestinations.length > 0 ? selectedDestinations.join(", ") : null,
       package_type: selectedPackage,
       address: formData.get("address") as string,
       city: formData.get("city") as string,
@@ -240,7 +240,23 @@ export default function Apply() {
 
       if (!response.ok || !result.success) {
         console.error("API response error:", result)
-        throw new Error(result.error || "Failed to submit application")
+        let errorMessage = "Failed to submit application"
+
+        if (result.details) {
+          errorMessage += `: ${result.details}`
+        } else if (result.error) {
+          errorMessage += `: ${result.error}`
+        }
+
+        if (result.hint) {
+          errorMessage += ` (${result.hint})`
+        }
+
+        if (result.dbDetails) {
+          console.error("Database error details:", result.dbDetails)
+        }
+
+        throw new Error(errorMessage)
       }
 
       console.log("Application submitted successfully:", result)
