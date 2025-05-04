@@ -5,7 +5,6 @@ import PricingPackages from "@/components/pricing-packages"
 import Link from "next/link"
 import { GlobeIcon, Users, Home } from "lucide-react"
 import TestimonialsSection from "@/components/testimonials-section"
-import RotaryCollaboration from "@/components/rotary-collaboration"
 
 export default function Page() {
   return (
@@ -22,7 +21,6 @@ export default function Page() {
           <div className="relative z-10 w-full">
             <Hero />
             <Features />
-            <RotaryCollaboration />
             <TestimonialsSection />
             <PricingPackages />
 

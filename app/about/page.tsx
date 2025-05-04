@@ -1,5 +1,6 @@
 import Image from "next/image"
 import { MessageCircle, Mail } from "lucide-react"
+import RotaryCollaboration from "@/components/rotary-collaboration"
 
 export default function About() {
   return (
@@ -31,6 +32,9 @@ export default function About() {
             To facilitate life-changing international exchange experiences that foster cross-cultural understanding,
             personal growth, and global competence among students worldwide.
           </p>
+
+          {/* Add the Rotary Collaboration section here */}
+          <RotaryCollaboration />
 
           <h2 className="text-2xl font-semibold text-black">What Sets Us Apart</h2>
           <ul className="list-disc pl-5 space-y-2 text-black text-lg">

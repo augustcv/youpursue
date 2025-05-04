@@ -34,19 +34,6 @@ export default function RotaryCollaboration() {
                     Explore Our Programs
                   </Link>
                 </Button>
-                <Button
-                  variant="outline"
-                  className="hover:bg-black hover:text-white transition-colors w-full sm:w-auto"
-                >
-                  <a
-                    href="https://www.rotary.org/en/our-programs/youth-exchanges"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full h-full flex items-center justify-center"
-                  >
-                    Learn About Rotary Exchanges
-                  </a>
-                </Button>
               </div>
             </div>
           </div>
