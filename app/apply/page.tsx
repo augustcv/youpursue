@@ -478,7 +478,7 @@ export default function Apply() {
                     <p className="mb-2">
                       <span className="font-semibold text-gray-700">Package Type:</span>{" "}
                       <span className={applicationData.packageType === "premium" ? "text-blue-600 font-semibold" : ""}>
-                        {applicationData.packageType === "premium" ? "Premium ($10,000)" : "Standard ($1,000)"}
+                        {applicationData.packageType === "premium" ? "Premium" : "Standard"}
                       </span>
                     </p>
                     <p className="mb-2">
@@ -541,7 +541,7 @@ export default function Apply() {
                 </div>
                 <p className="mb-2">
                   <span className="font-semibold text-gray-700">Package Price:</span>{" "}
-                  <span className="font-bold">{applicationData.packageType === "premium" ? "$10,000" : "$1,000"}</span>
+                  <span className="font-bold">{applicationData.packageType === "premium" ? "Premium Package" : "Standard Package"}</span>
                 </p>
                 <p className="text-sm text-gray-600 mt-2">
                   Your payment will be securely processed by Stripe. You will receive a receipt via email after your
@@ -658,7 +658,7 @@ export default function Apply() {
             <h3 className="font-semibold text-gray-800 mb-2">Application Process</h3>
             <ol className="list-decimal pl-5 space-y-2 text-gray-700">
               <li>
-                <strong>Choose your package</strong> - Select either Standard ($1,000) or Premium ($10,000)
+                <strong>Choose your package</strong> - Select either Standard or Premium
               </li>
               <li>
                 <strong>Complete application form</strong> - Provide your personal information and program preferences
@@ -720,7 +720,7 @@ export default function Apply() {
                   <div className="p-8 bg-gray-50">
                     <h3 className="text-2xl font-bold text-gray-800 mb-4">Standard</h3>
                     <div className="flex items-baseline mb-4">
-                      <span className="text-5xl font-extrabold text-gray-900">$1,000</span>
+                      <span className="text-3xl font-extrabold text-gray-900">Standard Package</span>
                     </div>
                     <p className="text-gray-600 mb-6">
                       Our standard package provides all the essentials for a successful exchange experience.
@@ -761,7 +761,7 @@ export default function Apply() {
                   <div className="p-8">
                     <h3 className="text-2xl font-bold text-gray-800 mb-4">Premium</h3>
                     <div className="flex items-baseline mb-4">
-                      <span className="text-5xl font-extrabold text-gray-900">$10,000</span>
+                      <span className="text-3xl font-extrabold text-gray-900">Premium Package</span>
                     </div>
                     <p className="text-gray-600 mb-6">
                       Our premium package offers enhanced support and personalized services for the ultimate exchange
@@ -1244,7 +1244,7 @@ export default function Apply() {
                     <div className="mt-4 flex items-center">
                       <CreditCard className="h-5 w-5 text-blue-500 mr-2" />
                       <p className="text-sm font-medium text-blue-800">
-                        {selectedPackage === "premium" ? "Premium Package: $10,000" : "Standard Package: $1,000"}
+                        {selectedPackage === "premium" ? "Premium Package" : "Standard Package"}
                       </p>
                     </div>
                   </div>

@@ -87,9 +87,9 @@ export default function AdminPage() {
                 <td className="border border-gray-300 p-2">{application.phone}</td>
                 <td className="border border-gray-300 p-2">
                   {application.packageType === "premium" ? (
-                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">Premium ($10,000)</span>
+                    <span className="bg-blue-100 text-blue-800 px-2 py-1 rounded">Premium</span>
                   ) : (
-                    <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded">Standard ($1,000)</span>
+                    <span className="bg-gray-100 text-gray-800 px-2 py-1 rounded">Standard</span>
                   )}
                 </td>
                 <td className="border border-gray-300 p-2">{application.exchangeLength}</td>

@@ -194,7 +194,7 @@ export default function HowItWorks() {
                 <div className="bg-white p-6 rounded-lg shadow-sm">
                   <h4 className="font-semibold text-black mb-2">Traditional Exchange Programs</h4>
                   <ul className="list-disc pl-5 space-y-2 text-gray-600">
-                    <li>High fees (often $20,000+)</li>
+                    <li>High agency fees</li>
                     <li>Limited destination options</li>
                     <li>Rigid schedules and durations</li>
                     <li>One-way hosting arrangement</li>

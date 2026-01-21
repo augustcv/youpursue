@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 import Navbar from "@/components/navbar"
 import Footer from "@/components/footer"
 import MouseMoveEffect from "@/components/mouse-move-effect"
+import ServiceWarning from "@/components/service-warning"
 import { organizationSchema } from "./structured-data"
 
 const inter = Inter({ subsets: ["latin"] })
@@ -62,7 +63,7 @@ export const metadata: Metadata = {
       "Join YouPursue's global community for life-changing international exchange experiences. Affordable programs, authentic cultural immersion, and comprehensive support for high school and university students.",
     images: [
       {
-        url: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Image%2002.03.25%20at%2021.37.jpg-R0UNjaLhNXE8Q7QNyWJKuoHh9LPUgy.jpeg",
+        url: "/images/image-2002.jpeg",
         width: 1200,
         height: 630,
         alt: "YouPursue International Exchange Programs",
@@ -76,7 +77,7 @@ export const metadata: Metadata = {
     description:
       "Experience authentic cultural exchange and global education with YouPursue's international student programs. Join students from 50+ countries worldwide.",
     images: [
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Image%2002.03.25%20at%2021.37.jpg-R0UNjaLhNXE8Q7QNyWJKuoHh9LPUgy.jpeg",
+      "/images/image-2002.jpeg",
     ],
     creator: "@YouPursue",
   },
@@ -89,7 +90,7 @@ export const metadata: Metadata = {
   other: {
     "google-site-verification": "your-verification-code",
   },
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({
@@ -112,6 +113,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} bg-white text-gray-900 antialiased overflow-x-hidden w-full`}>
         <div className="flex flex-col min-h-screen w-full overflow-x-hidden">
+          <ServiceWarning />
           <Navbar />
           <MouseMoveEffect />
           <div className="flex-grow w-full overflow-x-hidden">{children}</div>

@@ -53,9 +53,6 @@ export default function PricingPackages() {
           >
             <div className="p-8 bg-gray-50">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Standard</h3>
-              <div className="flex items-baseline mb-4">
-                <span className="text-5xl font-extrabold text-gray-900">$1,000</span>
-              </div>
               <p className="text-gray-600 mb-6">
                 Our standard package provides all the essentials for a successful exchange experience.
               </p>
@@ -97,9 +94,6 @@ export default function PricingPackages() {
             </div>
             <div className="p-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Premium</h3>
-              <div className="flex items-baseline mb-4">
-                <span className="text-5xl font-extrabold text-gray-900">$10,000</span>
-              </div>
               <p className="text-gray-600 mb-6">
                 Our premium package offers enhanced support and personalized services for the ultimate exchange
                 experience.
@@ -135,8 +129,7 @@ export default function PricingPackages() {
 
         <div className="mt-12 text-center">
           <p className="text-gray-500 text-sm">
-            All packages include the core YouPursue exchange experience. Prices are in USD and do not include travel
-            expenses.
+            All packages include the core YouPursue exchange experience. Travel expenses are not included.
           </p>
         </div>
       </div>
